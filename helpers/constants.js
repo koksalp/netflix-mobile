@@ -5,3 +5,21 @@ export const imageWidthMain = 200 ;
 export const imageHeightListing = 150; 
 export const imageWidthListing = 150;  
 export const initialProgramLimit = 18; 
+export const filterOptions = [
+    { 
+        value: "Yeniye Göre Sırala", 
+        key: "new"
+    }, 
+    { 
+        value: "Eskiye Göre Sırala", 
+        key: "old"
+    }, 
+    { 
+        value: "Puana Göre Sırala", 
+        key: "score"
+    }, 
+    { 
+        value: "Rastgele Sırala", 
+        key: "random" 
+    }, 
+] 
