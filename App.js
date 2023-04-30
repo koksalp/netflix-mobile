@@ -1,13 +1,16 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Platform} from "react-native";
+import { StyleSheet, View, Platform, ScrollView } from "react-native";
 
+// import all the screen components
 import MainScreen from "./screens/MainScreen";
 import ListingScreen from "./screens/ListingScreen";
 
+// create a stack
 const Stack = createNativeStackNavigator();
 
+// switch between main and listing screens
 export default function App() {
   return (
     <>
@@ -30,7 +33,7 @@ export default function App() {
             }}
           />
         </Stack.Navigator>
-      </NavigationContainer> 
+      </NavigationContainer>
     </>
   );
 }
@@ -44,10 +47,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "flex-start",
-    paddingTop: Platform.OS === "android" ? 50 : 20,
-  },
-  header: {
-    width: "100%",
-    height: 200,
   },
 });
