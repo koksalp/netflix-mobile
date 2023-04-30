@@ -9,17 +9,17 @@ export default function ImageContainer({
   onPressFn,
   text = "",
   textStyle,
-}) { 
-  // indicates whether image loaded successfully or not 
+}) {
+  // indicates whether image loaded successfully or not
   const [error, setError] = useState(false);
 
-  // set error to true 
+  // set error to true
   function handleError() {
     setError(true);
   }
 
-  // display image if loaded successfully 
-  // else display an error message to where image should've been 
+  // display image if loaded successfully
+  // else display an error message to where image should've been
   return (
     <View style={styles.outerContainer}>
       <View style={styles.container}>
@@ -30,13 +30,21 @@ export default function ImageContainer({
           }
           onPress={onPressFn}
         >
-          <View style={error ? [styles.innerContainerError, {width, height}] : styles.innerContainer}>
+          <View
+            style={
+              error
+                ? [styles.innerContainerError, { width, height }]
+                : styles.innerContainer
+            }
+          >
             {error ? (
-              <Text style={styles.errorText}>Görsel Yüklenirken Hata Oluştu</Text>
+              <Text style={styles.errorText}>
+                Görsel Yüklenirken Hata Oluştu
+              </Text>
             ) : (
               <Image
                 source={{ uri: imageUrl }}
-                style={{width, height}}
+                style={{ width, height }}
                 onError={handleError}
               />
             )}
@@ -76,17 +84,17 @@ const styles = StyleSheet.create({
   innerContainer: {
     borderRadius: 8,
     overflow: "hidden",
-  }, 
+  },
   innerContainerError: {
-    justifyContent: "center", 
-    alignItems: "center", 
-  } , 
+    justifyContent: "center",
+    alignItems: "center",
+  },
   text: {
     fontSize: 24,
     textAlign: "center",
-  }, 
+  },
   errorText: {
-    textAlign: "center", 
-    fontSize: 24, 
-  }
-}); 
+    textAlign: "center",
+    fontSize: 24,
+  },
+});
