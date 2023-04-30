@@ -41,7 +41,6 @@ export default function ListingScreen({ route, navigation }) {
   // go to main screen
   function goToMainScreen() {
     navigation.navigate("MainScreen");
-    console.log("navigating to main scr ");
   }
 
   // clear input in search bar
