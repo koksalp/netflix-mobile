@@ -4,19 +4,24 @@ import { SelectList } from "react-native-dropdown-select-list";
 
 import { filterOptions } from "../helpers/constants";
 
-export default function DropDown({ handleFilters , clearSearchInput, }) { 
-  const [selectedFilter, setSelectedFilter] = useState(""); 
-  function handleSelect() { 
-    clearSearchInput(); 
-    handleFilters(selectedFilter); 
+// a component with dropdown menu
+export default function DropDown({ handleFilters, clearSearchInput }) {
+  // filter info that user selected
+  const [selectedFilter, setSelectedFilter] = useState("");
+
+  // clear input of search bar and filter contents
+  function handleSelect() {
+    clearSearchInput();
+    handleFilters(selectedFilter);
   }
+
   return (
     <View style={styles.container}>
       <SelectList
         setSelected={(value) => setSelectedFilter(value)}
         data={filterOptions}
         save="key"
-        onSelect={handleSelect} 
+        onSelect={handleSelect}
         placeholder="Sırala"
         searchPlaceholder="Ara"
         notFoundText="Sonuç Bulunamadı"
@@ -32,4 +37,3 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
   },
 });
- 
