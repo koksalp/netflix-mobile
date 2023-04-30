@@ -5,9 +5,9 @@ export default function SearchInput({ handleSearch, resetPrograms , textInputRef
   const [isBackspacePressed, setIsBackspacePressed ] = useState(false); 
   const [isBackspaceAllowed, setIsBackspaceAllowed] = useState(false); 
 
-  function handleKeyPress({ nativeEvent }) { console.log(nativeEvent ); 
+  function handleKeyPress({ nativeEvent }) { 
     if (nativeEvent.key === "Backspace" && !isBackspacePressed ) { 
-      setIsBackspacePressed(true); console.log("true"); 
+      setIsBackspacePressed(true); 
     }
   } 
 
