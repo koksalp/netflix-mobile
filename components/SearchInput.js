@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, TextInput } from "react-native"; 
+import { StyleSheet, TextInput } from "react-native";
 
 // a component where user can type to
 // filter contents through all dataset
@@ -26,7 +26,6 @@ export default function SearchInput({
     } else if (isResetNeeded) {
       resetPrograms();
       setIsResetNeeded(false);
-      console.log("reset");
     }
   }
 
