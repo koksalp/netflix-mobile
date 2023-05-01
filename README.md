@@ -18,8 +18,8 @@ A simple netflix-like mobile application implemented using react native with exp
 - drag and drop the apk file onto the screen of your android emulator. It'll be shown in your apps list. 
 
 ### Test in Development Mode 
-- `git clone https://github.com/koksalp/netflix-mobile.git ` to clone the repo 
-- `cd netflix-mobile` to navigate into the project folder     
+- run `git clone https://github.com/koksalp/netflix-mobile.git ` to clone the repo 
+- run `cd netflix-mobile` to navigate into the project folder     
 - run `yarn install` to install all dependencies 
 - run `yarn expo start` to start a development server   
 - launch the app and test it either on an emulator device or on a physical device using expo go 
