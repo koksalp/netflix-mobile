@@ -1,7 +1,7 @@
 # netflix-mobile 
 
 ## What is it 
-A simple netflix-like mobile application implemented using react native with expo that only includes frontend design. where users can see contents of selected category, sort them by different properties and filter them by typing few letters to find a specific content. 
+A simple netflix-like mobile application implemented using react native with expo that only includes frontend design where users can see contents of selected category, sort them by different properties and filter them by typing a few letters to find a specific content. 
 
 ## How it works 
 - The application consists of 2 screens which are main screen where users can select a category between movies and TV shows and listing screen where contents get displayed and features such as search bar and dropdown menu are. 
