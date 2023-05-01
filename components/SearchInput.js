@@ -1,34 +1,23 @@
-import { useState } from "react";
 import { StyleSheet, TextInput } from "react-native";
 
-export default function SearchInput({ handleSearch, resetPrograms , textInputRef }) {
-  const [isBackspacePressed, setIsBackspacePressed ] = useState(false); 
-  const [isBackspaceAllowed, setIsBackspaceAllowed] = useState(false); 
+// a component where user can type to 
+// filter contents through all dataset 
+// regardless of the category 
+export default function SearchInput({
+  handleSearch,
+  resetPrograms,
+  textInputRef,
+}) { 
 
-  function handleKeyPress({ nativeEvent }) { 
-    if (nativeEvent.key === "Backspace" && !isBackspacePressed ) { 
-      setIsBackspacePressed(true); 
-    }
-  } 
-
-  function handleInput(userInput) { 
-    if (isBackspacePressed) {
-      if (isBackspaceAllowed ) { 
-        if (userInput.length===0) {
-          resetPrograms(); 
-          setIsBackspaceAllowed(false); 
-        } else {
-          handleSearch(userInput); 
-        } 
-      }
-      setIsBackspacePressed(false); 
+  // search through all dataset when user types and 
+  // the input field contains at least 3 letters 
+  // otherwise display contents according to 
+  // the last filter selected by user 
+  function handleInput(userInput) {
+    if (userInput.length >= 3) {
+      handleSearch(userInput);
     } else {
-      if (userInput.length >= 3) {
-        handleSearch(userInput);
-      } 
-      if (!isBackspaceAllowed) {
-        setIsBackspaceAllowed(true); 
-      }
+      resetPrograms();
     }
   }
 
@@ -37,8 +26,7 @@ export default function SearchInput({ handleSearch, resetPrograms , textInputRef
       style={styles.textInput}
       placeholder="Film / Dizi Ara"
       onChangeText={handleInput}
-      onKeyPress={handleKeyPress} 
-      ref={textInputRef} 
+      ref={textInputRef}
     />
   );
 }
@@ -51,4 +39,4 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 8,
   },
-}); 
+});
