@@ -1,5 +1,11 @@
 import { useRef, useState } from "react";
-import { FlatList, StyleSheet, View, Text } from "react-native";
+import {
+  FlatList,
+  StyleSheet,
+  View,
+  Text,
+  KeyboardAvoidingView,
+} from "react-native";
 
 import Header from "../components/Header";
 import ImageContainer from "../components/ImageContainer";
@@ -86,43 +92,45 @@ export default function ListingScreen({ route, navigation }) {
   // as a part of flatlist
   return (
     <View style={styles.container}>
-      <FlatList
-        data={programsArray}
-        keyExtractor={(item) => item.id}
-        ListEmptyComponent={
-          <Text style={{ textAlign: "center" }}>Sonuç Bulunamadı </Text>
-        }
-        ListHeaderComponent={
-          <>
-            <Header goToMainScreenFn={goToMainScreen} />
-            <SearchInput
-              handleSearch={filterProgramsBySearch}
-              resetPrograms={resetPrograms}
-              textInputRef={searchInputRef}
+      <View style={styles.flatlist}>
+        <FlatList
+          data={programsArray}
+          keyExtractor={(item) => item.id}
+          ListEmptyComponent={
+            <Text style={{ textAlign: "center" }}>Sonuç Bulunamadı </Text>
+          }
+          ListHeaderComponent={
+            <>
+              <Header goToMainScreenFn={goToMainScreen} />
+              <SearchInput
+                handleSearch={filterProgramsBySearch}
+                resetPrograms={resetPrograms}
+                textInputRef={searchInputRef}
+              />
+              <DropDown
+                handleFilters={handleFilters}
+                clearSearchInput={clearSearchInput}
+              />
+            </>
+          }
+          numColumns={2}
+          renderItem={({ item }) => (
+            <ImageContainer
+              width={imageWidthListing}
+              height={imageHeightListing}
+              imageUrl={item.images["Poster Art"].url}
+              text={item.title}
+              textStyle={{ fontSize: 16 }}
             />
-            <DropDown
-              handleFilters={handleFilters}
-              clearSearchInput={clearSearchInput}
-            />
-          </>
-        }
-        ListFooterComponent={
-          <Footer
-            containerStyle={styles.footerContainerStyle}
-            goToMainScreenFn={goToMainScreen}
-          />
-        }
-        numColumns={2}
-        renderItem={({ item }) => (
-          <ImageContainer
-            width={imageWidthListing}
-            height={imageHeightListing}
-            imageUrl={item.images["Poster Art"].url}
-            text={item.title}
-            textStyle={{ fontSize: 16 }}
-          />
-        )}
-      />
+          )}
+        />
+      </View>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.footer}
+      >
+        <Footer goToMainScreenFn={goToMainScreen} />
+      </KeyboardAvoidingView>
     </View>
   );
 }
@@ -131,7 +139,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  footerContainerStyle: {
-    marginTop: 32,
+  flatlist: {
+    flex: 5,
+  },
+  footer: {
+    flex: 1,
   },
 });
